@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class GestionJeu : MonoBehaviour
 {
+    
+    //Attribut
+    private int _pointage;
+    static private float _time;
+    private Player_mouvement _player;
+
+
+    //Methode private
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        InstructionDepart();
+        _pointage = 0;
+        _time = 0;
+        _player = FindObjectOfType<Player_mouvement>();
+    }
+
+    private static void InstructionDepart()
+    {
+        Debug.Log("*** Course à obstacle");
+        Debug.Log("Le but du jeu est d'atteindre la zone d'arrivée le plus rapidement possible");
+        Debug.Log("Pour y arriver vous avez besion de trouver une clé caché dans chaque niveau");
+        Debug.Log("Chaque contact avec un obstacle entraînera une pénalité");
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        _time = Time.fixedTime;
         
+    }
+
+    //methode public
+    public void AugmenterPointage()
+    {
+        _pointage++;
+        Debug.Log("Nombre d'accrochages : " + _pointage);
     }
 }
