@@ -28,12 +28,18 @@ public class Gestion_collision : MonoBehaviour
                 _touche = true;
                 _temps = Time.time + 4;
             }
-
-            for (reapartition = Time.time; reapartition < _temps; reapartition += 1)
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (_touche)
+        {
+            if(_temps == Time.time)
             {
-                _touche= false;
+                _touche = false;
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.clear;
             }
+            
         }
     }
 }
