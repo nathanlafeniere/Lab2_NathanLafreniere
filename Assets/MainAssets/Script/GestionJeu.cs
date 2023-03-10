@@ -37,6 +37,12 @@ public class GestionJeu : MonoBehaviour
         
     }
 
+    public void AugmenterCollision()
+    {
+        _pointage++;
+        Debug.Log("Nombre d'accrochages : " + _pointage);
+    }
+
     //methode public
     public void AugmenterPointage()
     {

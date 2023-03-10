@@ -19,8 +19,8 @@ public class GestionTemps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _time = Time.fixedTime;
-        GetTemps();
+        _time = Time.time;
+        //GetTemps();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +29,7 @@ public class GestionTemps : MonoBehaviour
         {
             _time = 0;
             _touche = true;
+            
         }
     }
 
