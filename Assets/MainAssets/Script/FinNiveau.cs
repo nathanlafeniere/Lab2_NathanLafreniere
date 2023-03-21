@@ -54,7 +54,7 @@ public class FinNiveau : MonoBehaviour
                     gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
 
                     _touche = true;
-                    //_gameManager.FinJeu();
+                    _gameManager.FinJeu();
                 }
 
             }

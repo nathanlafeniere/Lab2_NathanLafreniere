@@ -7,7 +7,7 @@ public class Gestion_collision : MonoBehaviour
 {
     private GestionJeu _gameManager;
     private bool _touche;
-    private float reapartition;
+    
     private float _temps;
     
     // Start is called before the first frame update
@@ -42,4 +42,6 @@ public class Gestion_collision : MonoBehaviour
             
         }
     }
+
+
 }

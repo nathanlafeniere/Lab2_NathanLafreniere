@@ -49,4 +49,11 @@ public class GestionJeu : MonoBehaviour
         _pointage++;
         Debug.Log("Nombre d'accrochages : " + _pointage);
     }
+
+    public void FinJeu()
+    {
+        Debug.Log("Niveau terminé");
+        Debug.Log("Temps : " + _time + " pénalité supplementaire : " + _pointage + " Temps total : " + (_time + _pointage));
+        _player.finPartie();
+    }
 }

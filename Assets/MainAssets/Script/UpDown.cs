@@ -16,6 +16,6 @@ public class UpDown : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        transform.position = new Vector(0f, Mathf.Sin(Time.time) + _amp + _positionInitiale, 0f);
+        transform.position = new Vector3(0f, Mathf.Sin(Time.time) + _amplitude + _positionInitiale, 0f);
     }
 }
