@@ -18,6 +18,7 @@ public class UpDown : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
          for (float y = _positionInitiale.y; y < 10; y++)
         {
             transform.position = new Vector3(_positionInitiale.x, Mathf.Sin(Time.time*_frequance) + y, _positionInitiale.z);

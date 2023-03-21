@@ -37,7 +37,7 @@ public class Gestion_collision : MonoBehaviour
             if(_temps == Time.time)
             {
                 _touche = false;
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.clear;
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
             }
             
         }
