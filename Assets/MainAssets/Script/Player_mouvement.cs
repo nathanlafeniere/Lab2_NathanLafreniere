@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_mouvement : MonoBehaviour
 {
     [SerializeField] private float _vitesse;
+    [SerializeField] private float _rotationSpeed;
 
     private Rigidbody _rb;
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class Player_mouvement : MonoBehaviour
     private void FixedUpdate()
     {
         Mouvement_joueur();
+        RotationDirection();
     }
     // Update is called once per frame
     private void Update()
@@ -32,5 +34,13 @@ public class Player_mouvement : MonoBehaviour
 
         Vector3 direction = new Vector3(positionX, 0f, positionZ);
         _rb.AddForce(_rb.velocity = direction * Time.fixedDeltaTime * _vitesse);
+    }
+
+    private void RotationDirection()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(transform.foward);
+        Quaternion rotation = Quaternion.RotateTowards(Transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+        _rigidBody.MouveRotation(rotation);
     }
 }
