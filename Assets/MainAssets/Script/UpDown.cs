@@ -11,11 +11,22 @@ public class UpDown : MonoBehaviour
 
     private void Start()
     {
-        _amplitude = 3;
+        _positionInitiale= transform.position;
+        _amplitude = 0;
+        _frequance= 0;
     }
     // Update is called once per frame
     private void Update()
     {
-        transform.position = new Vector3(0f, Mathf.Sin(Time.time) + _amplitude + _positionInitiale, 0f);
+         for (float y = _positionInitiale.y; y < 10; y++)
+        {
+            transform.position = new Vector3(_positionInitiale.x, Mathf.Sin(Time.time*_frequance) + y, _positionInitiale.z);
+        }
+        for (float y = _positionInitiale.y; y > 0; y++)
+        {
+            transform.position = new Vector3(_positionInitiale.x, Mathf.Sin(Time.time * _frequance) - y, _positionInitiale.z);
+        }
+
+
     }
 }
