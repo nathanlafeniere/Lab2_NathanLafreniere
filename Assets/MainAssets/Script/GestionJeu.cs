@@ -9,6 +9,8 @@ public class GestionJeu : MonoBehaviour
     private int _pointage;
     static private float _time;
     private Player_mouvement _player;
+    private FinNiveau _end;
+    
 
 
     //Methode private
@@ -16,6 +18,7 @@ public class GestionJeu : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _end = FindObjectOfType<FinNiveau>();
         InstructionDepart();
         _pointage = 0;
         _time = 0;
@@ -40,20 +43,35 @@ public class GestionJeu : MonoBehaviour
     public void AugmenterCollision()
     {
         _pointage++;
-        Debug.Log("Nombre d'accrochages : " + _pointage);
+        //Debug.Log("Nombre d'accrochages : " + _pointage);
     }
 
     //methode public
     public void AugmenterPointage()
     {
         _pointage++;
-        Debug.Log("Nombre d'accrochages : " + _pointage);
+        //Debug.Log("Nombre d'accrochages : " + _pointage);
     }
 
     public void FinJeu()
     {
-        Debug.Log("Niveau terminé");
+        Debug.Log("Partie terminé");
         Debug.Log("Temps : " + _time + " pénalité supplementaire : " + _pointage + " Temps total : " + (_time + _pointage));
+
+        Debug.Log("Résultat Niveau 1");
+        Debug.Log("Temps : " + _end.GetNiveau1Temps() + " pénalité supplementaire : " + _end.GetNiveau1Collision() + " Temps total : " + (_end.GetNiveau1Temps() + _end.GetNiveau1Collision()));
+
+        Debug.Log("Résultat Niveau 2");
+        Debug.Log("Temps : " + _end.GetNiveau2Temps() + " pénalité supplementaire : " + _end.GetNiveau2Collision() + " Temps total : " + (_end.GetNiveau2Temps() + _end.GetNiveau2Collision()));
+
+        Debug.Log("Résultat Niveau 3");
+        Debug.Log("Temps : " + _end.GetNiveau3Temps() + " pénalité supplementaire : " + _end.GetNiveau3Collision() + " Temps total : " + (_end.GetNiveau2Temps() + _end.GetNiveau3Collision()));
+
         _player.finPartie();
+    }
+
+    public int GetPointage()
+    {
+         return _pointage;
     }
 }

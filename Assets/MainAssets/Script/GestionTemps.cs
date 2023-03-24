@@ -33,8 +33,8 @@ public class GestionTemps : MonoBehaviour
         }
     }
 
-    public void GetTemps()
+    public float GetTemps()
     {
-        Debug.Log(_time);
+        return _time;
     }
 }
