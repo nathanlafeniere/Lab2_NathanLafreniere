@@ -62,8 +62,8 @@ public class FinNiveau : MonoBehaviour
                 if (!_touche)
                 {
                     gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-                    _finNiveau3Collision = _gameManager.GetPointage() - (_finNiveau2Collision+_finNiveau1Collision);
-                    _finNiveau3Temps = _temps.GetTemps() - (_finNiveau2Temps + _finNiveau1Temps);
+                    _finNiveau3Collision = _gameManager.GetPointage();
+                    _finNiveau3Temps = _temps.GetTemps();
                     _touche = true;
                     _gameManager.FinJeu();
                 }
@@ -84,8 +84,8 @@ public class FinNiveau : MonoBehaviour
             {
                 if (!_touche)
                 { 
-                    _finNiveau2Collision = _gameManager.GetPointage() - _finNiveau1Collision;
-                    _finNiveau2Temps = _temps.GetTemps() - _finNiveau1Temps;
+                    _finNiveau2Collision = _gameManager.GetPointage();
+                    _finNiveau2Temps = _temps.GetTemps();
                     
                     SceneManager.LoadScene(no_scene + 1);
                 }
