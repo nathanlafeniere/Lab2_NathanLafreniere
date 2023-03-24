@@ -100,7 +100,7 @@ public class FinNiveau : MonoBehaviour
     }
     public int GetNiveau2Collision()
     {
-        return _finNiveau1Collision;
+        return _finNiveau2Collision;
     }
     public int GetNiveau3Collision()
     {

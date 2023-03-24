@@ -12,7 +12,7 @@ public class Player_mouvement : MonoBehaviour
     private void Start()
     {
         this.transform.position = new Vector3(-0.037f, 0.51f, -44.78f);
-        _vitesse = 400f;
+        _vitesse = 600f;
         _rb = GetComponent<Rigidbody>();
     }
 

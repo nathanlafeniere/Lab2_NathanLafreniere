@@ -65,7 +65,7 @@ public class GestionJeu : MonoBehaviour
         Debug.Log("Temps : " + _end.GetNiveau2Temps() + " pénalité supplementaire : " + _end.GetNiveau2Collision() + " Temps total : " + (_end.GetNiveau2Temps() + _end.GetNiveau2Collision()));
 
         Debug.Log("Résultat Niveau 3");
-        Debug.Log("Temps : " + _end.GetNiveau3Temps() + " pénalité supplementaire : " + _end.GetNiveau3Collision() + " Temps total : " + (_end.GetNiveau2Temps() + _end.GetNiveau3Collision()));
+        Debug.Log("Temps : " + _end.GetNiveau3Temps() + " pénalité supplementaire : " + _end.GetNiveau3Collision() + " Temps total : " + (_end.GetNiveau3Temps() + _end.GetNiveau3Collision()));
 
         _player.finPartie();
     }
