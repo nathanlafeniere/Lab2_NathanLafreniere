@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FinNiveau : MonoBehaviour
 {
@@ -16,12 +17,13 @@ public class FinNiveau : MonoBehaviour
     private float _finNiveau2Temps;
     private int _finNiveau3Collision;
     private float _finNiveau3Temps;
+    private Player_mouvement _player;
 
 
     // Start is called before the first frame update
     private void Start()
     {
-
+        _player = FindObjectOfType<Player_mouvement>();
         _gameManager = FindObjectOfType<GestionJeu>();
         _temps = FindObjectOfType<GestionTemps>();
         _touche = false;
@@ -39,18 +41,7 @@ public class FinNiveau : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        int nbGestionJeu = FindObjectsOfType<GestionJeu>().Length;
-        if (nbGestionJeu > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -62,10 +53,12 @@ public class FinNiveau : MonoBehaviour
                 if (!_touche)
                 {
                     gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-                    _finNiveau3Collision = _gameManager.GetPointage();
-                    _finNiveau3Temps = _temps.GetTemps();
-                    _touche = true;
+                    _finNiveau3Collision = _gameManager.GetPointage() - (_finNiveau1Collision + _finNiveau2Collision);
+                    _finNiveau3Temps = _temps.GetTemps() - (_finNiveau1Temps + _finNiveau2Temps);
+                    
                     _gameManager.FinJeu();
+                    _player.finPartie();
+                    _touche = true;
                 }
 
             }
@@ -74,9 +67,9 @@ public class FinNiveau : MonoBehaviour
                 if (!_touche)
                 {
                     _finNiveau1Collision = _gameManager.GetPointage();
-                    Debug.Log(_finNiveau1Collision);
+                    //Debug.Log(_finNiveau1Collision);
                     _finNiveau1Temps = _temps.GetTemps();
-                    Debug.Log("here");
+                    //Debug.Log("here");
                     SceneManager.LoadScene(no_scene + 1);
                 }
             }
@@ -84,9 +77,9 @@ public class FinNiveau : MonoBehaviour
             {
                 if (!_touche)
                 { 
-                    _finNiveau2Collision = _gameManager.GetPointage();
-                    _finNiveau2Temps = _temps.GetTemps();
-                    
+                    _finNiveau2Collision = _gameManager.GetPointage() - _finNiveau1Collision;
+                    _finNiveau2Temps = _temps.GetTemps() - _finNiveau1Temps;
+                    Debug.Log(_finNiveau2Temps);
                     SceneManager.LoadScene(no_scene + 1);
                 }
             }

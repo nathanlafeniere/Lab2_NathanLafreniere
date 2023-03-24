@@ -20,7 +20,7 @@ public class GestionTemps : MonoBehaviour
     void Update()
     {
         _time = Time.time;
-        GetTemps();
+        //Debug.Log(_time);
     }
     private void OnTriggerEnter(Collider other)
     {

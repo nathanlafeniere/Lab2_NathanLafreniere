@@ -7,8 +7,8 @@ public class GestionJeu : MonoBehaviour
     
     //Attribut
     private int _pointage;
-    static private float _time;
-    private Player_mouvement _player;
+    private float _time;
+   
     private FinNiveau _end;
     
 
@@ -22,7 +22,7 @@ public class GestionJeu : MonoBehaviour
         InstructionDepart();
         _pointage = 0;
         _time = 0;
-        _player = FindObjectOfType<Player_mouvement>();
+        
     }
 
     private static void InstructionDepart()
@@ -40,18 +40,30 @@ public class GestionJeu : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        // Vérifie si un gameObject GestionJeu est déjà présent sur la scène si oui
+        // on détruit celui qui vient d'être ajouté. Sinon on le conserve pour le 
+        // scène suivante.
+        int nbGestionJeu = FindObjectsOfType<GestionJeu>().Length;
+        if (nbGestionJeu > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+    
     public void AugmenterCollision()
     {
         _pointage++;
-        Debug.Log("Nombre d'accrochages : " + _pointage);
+        //Debug.Log("Nombre d'accrochages : " + _pointage);
     }
 
     //methode public
-    public void AugmenterPointage()
-    {
-        _pointage++;
-        Debug.Log("Nombre d'accrochages : " + _pointage);
-    }
+    
 
     public void FinJeu()
     {
@@ -67,7 +79,7 @@ public class GestionJeu : MonoBehaviour
         Debug.Log("Résultat Niveau 3");
         Debug.Log("Temps : " + _end.GetNiveau3Temps() + " pénalité supplementaire : " + _end.GetNiveau3Collision() + " Temps total : " + (_end.GetNiveau3Temps() + _end.GetNiveau3Collision()));
 
-        _player.finPartie();
+        
     }
 
     public int GetPointage()
